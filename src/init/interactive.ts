@@ -1,8 +1,7 @@
 import clone from "./clone";
 import { normalize } from "path";
-import { statSync, readdirSync, existsSync, rmSync } from "fs";
-import { intro, outro, select, text, log, isCancel, confirm } from "@clack/prompts";
 import { validateFolder } from "./utils";
+import { intro, outro, select, text, log, isCancel } from "@clack/prompts";
 
 export default async (force: boolean) => {
 	// User didn't provide a repo, enter interactive mode.

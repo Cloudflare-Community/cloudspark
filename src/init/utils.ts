@@ -1,5 +1,5 @@
 import { statSync, readdirSync, existsSync, rmSync } from "fs";
-import { intro, outro, select, text, log, isCancel, confirm } from "@clack/prompts";
+import { outro, log, isCancel, confirm } from "@clack/prompts";
 
 export const validateFolder = async (target: string, force: boolean) => {
 	if (existsSync(target)) {
