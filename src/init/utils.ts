@@ -7,9 +7,11 @@ export const validateFolder = async (target: string, force: boolean) => {
 		const statResult = statSync(target);
 		if (statResult.isFile() || statResult.isSymbolicLink()) {
 			if (force) {
-				log.warn("Target is a file or symlink, but force flag is set, removing file and continuing.");
+				log.warn(
+					"Target is a file or symlink, but force flag is set, removing file and continuing.",
+				);
 			} else {
-				log.error("Target is a file or symlink.");
+				log.warn("Target is a file or symlink.");
 				const overwrite = await confirm({
 					message: "Remove and continue?",
 					initialValue: false,
@@ -25,7 +27,9 @@ export const validateFolder = async (target: string, force: boolean) => {
 		// Check whether target already has files
 		if (statResult.isDirectory() && readdirSync(target).length > 0) {
 			if (force) {
-				log.warn("Target directory is not empty but force flag is set, continuing.")
+				log.warn(
+					"Target directory is not empty but force flag is set, continuing.",
+				);
 			} else {
 				log.warn("Target directory is not empty.");
 				const overwrite = await confirm({
@@ -39,4 +43,4 @@ export const validateFolder = async (target: string, force: boolean) => {
 			}
 		}
 	}
-}
+};

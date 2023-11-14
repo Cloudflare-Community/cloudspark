@@ -1,41 +1,75 @@
 import clone from "./clone";
-import { normalize } from "path";
+import path from "path";
+import { intro, text, log, isCancel, outro } from "@clack/prompts";
 import { validateFolder } from "./utils";
-import { intro, outro, text, log, isCancel } from "@clack/prompts";
+import { TEMPLATES, THIS_REPO } from "../constants";
+import { promptForDirectory } from "./prompts";
 
-export default async (template: string, target: string | null, force: boolean) => {
-	// User didn't provide a repo, enter interactive mode.
+export default async (
+	template: string,
+	targetDir: string | null,
+	force: boolean,
+) => {
 	intro("Cloudspark CLI ⚡️");
 
-	let finalTarget: string;
-	if (target != null) {
-		log.message(`Express mode active. Initializing "${template}" in folder "${target}".`);
-		finalTarget = target;
+	let finalTemplate = null;
+	let finalLanguage = null;
+	if (!template.startsWith("http")) {
+		if (template.split("/").length != 2) {
+			log.error(
+				"Template specified is invalid; template should be formatted like NAME/LANGUAGE.",
+			);
+			outro("Exited. No changes were made.");
+			process.exit(1);
+		}
+
+		const requestedName = template.split("/")[0];
+		const requestedLanguage = template.split("/")[1];
+
+		// Template is probably part of this repo.
+		const foundTemplate = TEMPLATES.find(
+			(t) => t.name == requestedName && t.languages.includes(requestedLanguage),
+		);
+		if (foundTemplate == null) {
+			// Template not found.
+			log.error(
+				`Template "${requestedName}" with language "${requestedLanguage}" not found. Please check the spelling and try again.`,
+			);
+			outro();
+			process.exit(1);
+		}
+		finalTemplate = foundTemplate.name;
+		finalLanguage = requestedLanguage;
 	} else {
-		log.message(`Express mode active. Initializing "${template}".`);
+		// Template is an absolute URL.
+		finalTemplate = template;
+	}
+
+	let finalTargetDir: string;
+	if (targetDir != null) {
+		log.message(
+			`Express mode active. Initializing the "${finalTemplate}" template with language "${finalLanguage}" in folder "${targetDir}".`,
+		);
+		finalTargetDir = targetDir;
+	} else {
+		log.message(
+			`Express mode active. Initializing the "${finalTemplate}" template with language ${finalLanguage}.`,
+		);
 
 		// Ask the user for a target directory.
-		const target = await text({
-			message: "Enter the target directory you want to initialize into",
-			placeholder: `./worker`,
-			defaultValue: `./worker`,
-		});
-		if (isCancel(target)) {
-			outro("Cancelled. No changes were made.");
-			process.exit(0);
-		}
-		finalTarget = target;
+		finalTargetDir = await promptForDirectory();
 	}
 
 	// Normalize the path.
-	const normalizedTarget = normalize(finalTarget);
+	const normalizedTarget = path.normalize(finalTargetDir);
 
 	// Perform validation on the path.
 	await validateFolder(normalizedTarget, force);
 
 	// Clone the repo.
-	await clone(template, normalizedTarget);
+	await clone(THIS_REPO, `${finalTemplate}/${finalLanguage}`, normalizedTarget);
 
-	outro(`Done! Your Worker is ready to go at ${finalTarget}`)
+	log.info(`Done! Your Worker is ready to go at "${finalTargetDir}"`);
+	outro();
 	process.exit(0);
-}
+};

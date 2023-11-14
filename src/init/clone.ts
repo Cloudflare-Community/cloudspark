@@ -1,26 +1,26 @@
-import degit from "degit";
-import { log, outro, spinner } from "@clack/prompts";
+import { downloadTemplate } from "giget";
+import { outro, spinner } from "@clack/prompts";
 
-export default async function clone(repo: string, target: string) {
+export default async function clone(
+	repo: string,
+	subpath: string,
+	target: string,
+) {
 	// Start a loading spinner.
 	const spin = spinner();
-	spin.start("Cloning template...");
+	spin.start(`Downloading template (this may take a while)...`);
 
-	// Create a degit emitter.
-	const emitter = degit(repo, {
-		cache: false,
-		force: true
-	});
-
-	// Clone the repo.
-	emitter.on("warn", (warning) => log.warn(warning.message));
 	try {
-		await emitter.clone(target);
+		// Download the template.
+		await downloadTemplate(`github:${repo}/${subpath}`, {
+			dir: target,
+			force: true,
+		});
 	} catch (e: any) {
-		spin.stop();
-		log.error(e.message);
-		outro("Cancelled. Artifacts may be present.");
+		spin.stop(e.message, 1);
+		outro("Exited. Artifacts may be present on filesystem.");
 		process.exit(1);
 	}
+
 	spin.stop("Successfully cloned template.");
 }
