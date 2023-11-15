@@ -12,7 +12,7 @@ export default async function clone(
 
 	try {
 		// Download the template.
-		await downloadTemplate(`github:${repo}/${subpath}`, {
+		await downloadTemplate(`github:${repo}/templates/${subpath}`, {
 			dir: target,
 			force: true,
 		});
