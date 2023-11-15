@@ -1,9 +1,9 @@
-import clone from "./clone";
 import path from "path";
-import { intro, log, outro } from "@clack/prompts";
+import clone from "./clone";
 import { validateFolder } from "./utils";
-import { TEMPLATES, THIS_REPO } from "../constants";
 import { promptForDirectory } from "./prompts";
+import { intro, log, outro } from "@clack/prompts";
+import { TEMPLATES, THIS_REPO } from "../constants";
 
 export default async (
 	template: string,

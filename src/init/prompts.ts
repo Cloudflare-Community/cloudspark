@@ -1,5 +1,5 @@
-import { isCancel, outro, select, text } from "@clack/prompts";
 import { Template } from "../constants";
+import { isCancel, outro, select, text } from "@clack/prompts";
 
 export const promptForTemplate = async (templates: Template[]) => {
 	const result: string | symbol = await select({

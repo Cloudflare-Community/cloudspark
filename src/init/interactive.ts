@@ -1,7 +1,7 @@
-import clone from "./clone";
 import path from "path";
-import { intro, select, text, log, isCancel, outro } from "@clack/prompts";
+import clone from "./clone";
 import { validateFolder } from "./utils";
+import { intro, log, outro } from "@clack/prompts";
 import { TEMPLATES, THIS_REPO } from "../constants";
 import {
 	promptForLanguage,
@@ -27,7 +27,6 @@ export default async (force: boolean) => {
 	// Clone the repo.
 	await clone(THIS_REPO, `${template.name}/${language}`, normalizedTarget);
 
-	log.info(`Done! Your Worker is ready to go at "${targetDir}"`);
-	outro();
+	outro(`Done! Your Worker is ready to go at "${targetDir}"`);
 	process.exit(0);
 };
