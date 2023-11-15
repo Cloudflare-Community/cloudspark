@@ -7,10 +7,10 @@ _As with all projects in the Cloudflare-Community Github Organization, and the `
 
 CloudSpark is a Node CLI tool that allows easy bootstrapping of a Cloudflare Developer Platform project, which may include a Worker, Pages site, or any other dependent bindings.
 
-## Installation
+## Usage
 
-While under development, CloudSpark is not on NPM. To install from the latest GitHub commit:
+While under development, CloudSpark is not on NPM. To use it directly from github, run:
 
 ```bash
-npm install -g https://github.com/Cloudflare-Community/cloudspark
+npx Cloudflare-Community/cloudspark
 ```
