@@ -1,7 +1,5 @@
 import { isCancel, outro, select, text } from "@clack/prompts";
 import { Template } from "../constants";
-import path from "path";
-import { validateFolder } from "./utils";
 
 export const promptForTemplate = async (templates: Template[]) => {
 	const result: string | symbol = await select({
@@ -23,8 +21,9 @@ export const promptForLanguage = async (template: Template) => {
 	const result: string | symbol = await select({
 		message: "Select a language",
 		options: template.languages.map((l) => ({
-			label: l === "rs" ? "Rust" : l === "js" ? "JavaScript" : "TypeScript",
-			value: l,
+			label: l.displayName,
+			value: l.name,
+			hint: l.description,
 		})),
 	});
 	if (isCancel(result)) {

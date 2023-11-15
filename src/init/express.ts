@@ -1,6 +1,6 @@
 import clone from "./clone";
 import path from "path";
-import { intro, text, log, isCancel, outro } from "@clack/prompts";
+import { intro, log, outro } from "@clack/prompts";
 import { validateFolder } from "./utils";
 import { TEMPLATES, THIS_REPO } from "../constants";
 import { promptForDirectory } from "./prompts";
@@ -28,7 +28,9 @@ export default async (
 
 		// Template is probably part of this repo.
 		const foundTemplate = TEMPLATES.find(
-			(t) => t.name == requestedName && t.languages.includes(requestedLanguage),
+			(t) =>
+				t.name == requestedName &&
+				t.languages.map((l) => l.name).includes(requestedLanguage),
 		);
 		if (foundTemplate == null) {
 			// Template not found.
