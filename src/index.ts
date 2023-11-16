@@ -17,6 +17,4 @@ cli
 	// .option("-p, --provider <git*>", "Use a specific git provider(github, gitlab, bitbucket, sourcehut). Defaults to github. Only supported when providing your own repo.")
 	.action(init);
 
-await cli.parseAsync();
-
-export { init };
+export { init, cli };

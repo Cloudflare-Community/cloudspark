@@ -1,14 +1,14 @@
 {
 	"name": "cloudspark",
 	"type": "module",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"main": "index.js",
 	"license": "Apache-2.0",
 	"repository": "Cloudflare-Community/cloudspark",
 	"keywords": ["cloudflare", "init", "cli", "cloudspark"],
-	"description": "create-cloudspark, just a few seconds to your first Cloudflare Developer Platform Project",
+	"description": "Cloudspark CLI, your CommunityApproved™ Cloudflare Developer Platform CLI",
 	"bin": {
-		"cloudspark": "./index.js"
+		"cloudspark": "./entry.js"
 	},
-	"files": ["./index.js"]
+	"files": ["./index.js", "./entry.js"]
 }

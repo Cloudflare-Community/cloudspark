@@ -10,3 +10,9 @@ pnpm create cloudspark
 yarn create cloudspark
 bun create cloudspark
 ```
+
+## Options
+
+`-y`: Bypasses prompts and uses default values (does not apply to output folder conflicts).
+
+`-f`/`--force`: Force clone the template, ignoring existing files.

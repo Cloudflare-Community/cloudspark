@@ -6,7 +6,7 @@ const cli = program
 	.name("create-cloudspark")
 	.description(
 		"create-cloudspark, just a few seconds to your first Cloudflare Developer Platform Project",
-	).description("Initialize a new Worker")
+	)
 	.argument("[repo]", "The repository to initialize.")
 	.argument("[folder]", "The folder to initialize to.")
 	.option("-y", "Bypass prompts and use default values(doesn't apply to output folder conflicts).")
