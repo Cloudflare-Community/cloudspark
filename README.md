@@ -9,7 +9,7 @@ CloudSpark is a Node CLI tool that allows easy bootstrapping of a Cloudflare Dev
 Currently, CloudSpark only has the `init` command, which is also used by [`create-cloudspark`](https://npmjs.com/package/create-cloudspark).
 
 ```sh
-$ cloudspark init --help
+$ npx cloudspark init --help
 Usage: cloudspark init [options] [repo] [folder]
 
 Initialize a new Worker
