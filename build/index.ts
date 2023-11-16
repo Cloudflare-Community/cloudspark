@@ -32,6 +32,7 @@ buildSync({
 	format: "esm",
 	platform: "node",
 	target: "esnext",
+	external: ["cloudspark"],
 	banner: {
 		js: `#!/usr/bin/env node\nimport { createRequire as topLevelCreateRequire } from "module";const require = topLevelCreateRequire(import.meta.url);`,
 	},

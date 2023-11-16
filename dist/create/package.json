@@ -9,5 +9,8 @@
 	"bin": {
 		"cloudspark": "./index.js"
 	},
-	"files": ["./index.js"]
+	"files": ["./index.js"],
+	"dependencies": {
+		"cloudspark": "0.0.1"
+	}
 }
