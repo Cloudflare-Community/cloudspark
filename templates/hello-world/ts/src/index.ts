@@ -12,8 +12,8 @@ export interface Env {
 	// MY_SERVICE: Fetcher;
 }
 
-export default <ExportedHandler<Env>>{
-	async fetch(req, env, ctx): Promise<Response> {
+export default {
+	async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		return new Response("Hello World!");
 	},
 };
