@@ -1,9 +1,11 @@
+import { THIS_REPO } from "../constants";
 import { downloadTemplate } from "giget";
 import { outro, spinner } from "@clack/prompts";
 
-export default async function clone(
-	repo: string,
-	subpath: string,
+const buildSource = (template: string, language: string) => `github:${THIS_REPO}/templates/${template}/${language}`;
+
+async function clone(
+	source: string,
 	target: string,
 ) {
 	// Start a loading spinner.
@@ -12,7 +14,7 @@ export default async function clone(
 
 	try {
 		// Download the template.
-		await downloadTemplate(`github:${repo}/templates/${subpath}`, {
+		await downloadTemplate(source, {
 			dir: target,
 			force: true,
 		});
@@ -24,3 +26,5 @@ export default async function clone(
 
 	spin.stop("Successfully cloned template.");
 }
+
+export { clone, buildSource };

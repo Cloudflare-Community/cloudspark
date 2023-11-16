@@ -1,6 +1,5 @@
 import { program } from "commander";
-import interactive from "./init/interactive";
-import express from "./init/express";
+import init from "./init";
 
 const cli = program
 	.name("cloudspark")
@@ -13,13 +12,9 @@ cli
 	.description("Initialize a new Worker")
 	.argument("[repo]", "The repository to initialize.")
 	.argument("[folder]", "The folder to initialize to.")
-	.option("--force", "Force clone the template, ignoring existing files.")
-	.action(async (repo, folder, args) => {
-		if (repo == null) {
-			await interactive(args.force ?? false);
-		} else {
-			await express(repo, folder, args.force ?? false);
-		}
-	});
+	.option("-y", "Bypass prompts and use default values(doesn't apply to output folder conflicts).")
+	.option("-f, --force", "Force clone the template, ignoring existing files.")
+	// .option("-p, --provider <git*>", "Use a specific git provider(github, gitlab, bitbucket, sourcehut). Defaults to github. Only supported when providing your own repo.")
+	.action(init);
 
 await cli.parseAsync();

@@ -1,3 +1,4 @@
+import { normalize } from "path";
 import { Template } from "../constants";
 import { isCancel, outro, select, text } from "@clack/prompts";
 
@@ -42,5 +43,5 @@ export const promptForDirectory = async () => {
 		outro("Cancelled. No changes were made.");
 		process.exit(0);
 	}
-	return target;
+	return normalize(target);
 };

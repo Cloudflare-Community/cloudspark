@@ -12,7 +12,7 @@ await build({
 	platform: "node",
 	target: "esnext",
 	banner: {
-		js: `#!/usr/bin/env node\nconsole.log("Entered Cloudspark CLI...");\nimport { createRequire as topLevelCreateRequire } from "module";\nconst require = topLevelCreateRequire(import.meta.url);`,
+		js: `#!/usr/bin/env node\nimport { createRequire as topLevelCreateRequire } from "module";const require = topLevelCreateRequire(import.meta.url);`,
 	},
 });
 console.log("Built in " + (new Date().getTime() - date.getTime()) + "ms.");
