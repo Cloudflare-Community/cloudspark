@@ -1,18 +1,14 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["esnext"],
-    "isolatedModules": true,
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"lib": ["esnext"],
+		"isolatedModules": true,
 		"types": ["node"],
-    "noEmit": true,
-    "strict": true,
-    "esModuleInterop": true,
-  },
-  "include": [
-    "src",
-    "types",
-		"build.ts"
-  ]
+		"noEmit": true,
+		"strict": true,
+		"esModuleInterop": true
+	},
+	"include": ["src", "types", "build"]
 }

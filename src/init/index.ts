@@ -1,7 +1,7 @@
-import { clone, buildSource } from "./clone";
 import { validateFolder } from "./utils";
-import { intro, log, outro } from "@clack/prompts";
 import { TEMPLATES } from "../constants";
+import { clone, buildSource } from "./clone";
+import { intro, log, outro } from "@clack/prompts";
 import {
 	promptForLanguage,
 	promptForDirectory,

@@ -1,15 +1,12 @@
-import init from "./init";
+// Shim used by create-cloudspark
+import { init } from "cloudspark";
 import { program } from "commander";
 
 const cli = program
-	.name("cloudspark")
+	.name("create-cloudspark")
 	.description(
-		"Cloudspark CLI, your CommunityApproved™ Cloudflare Developer Platform CLI",
-	);
-
-cli
-	.command("init")
-	.description("Initialize a new Worker")
+		"create-cloudspark, just a few seconds to your first Cloudflare Developer Platform Project",
+	).description("Initialize a new Worker")
 	.argument("[repo]", "The repository to initialize.")
 	.argument("[folder]", "The folder to initialize to.")
 	.option("-y", "Bypass prompts and use default values(doesn't apply to output folder conflicts).")
