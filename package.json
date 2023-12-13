@@ -9,13 +9,13 @@
 	},
 	"devDependencies": {
 		"@clack/prompts": "^0.7.0",
-		"@types/node": "^20.9.0",
+		"@types/node": "^20.10.4",
 		"clack": "^0.1.0",
 		"commander": "^11.1.0",
-		"esbuild": "^0.19.5",
-		"eslint": "^8.53.0",
+		"esbuild": "^0.19.9",
+		"eslint": "^8.55.0",
 		"giget": "github:helloimalastair/giget",
-		"prettier": "^3.1.0",
-		"tsx": "^4.1.2"
+		"prettier": "^3.1.1",
+		"tsx": "^4.6.2"
 	}
 }
