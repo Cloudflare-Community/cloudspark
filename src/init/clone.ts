@@ -2,12 +2,10 @@ import { THIS_REPO } from "../constants";
 import { downloadTemplate } from "giget";
 import { outro, spinner } from "@clack/prompts";
 
-const buildSource = (template: string, language: string) => `github:${THIS_REPO}/templates/${template}/${language}`;
+const buildSource = (template: string, language: string) =>
+	`github:${THIS_REPO}/templates/${template}/${language}`;
 
-async function clone(
-	source: string,
-	target: string,
-) {
+async function clone(source: string, target: string) {
 	// Start a loading spinner.
 	const spin = spinner();
 	spin.start(`Downloading template (this may take a while)...`);

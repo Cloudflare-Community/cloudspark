@@ -8,9 +8,15 @@ import {
 	promptForTemplate,
 } from "./prompts";
 
-export default async (repo: string | undefined, folder: string | undefined, args: {
-	y: boolean, force: boolean, provider: string | undefined
-}) => {
+export default async (
+	repo: string | undefined,
+	folder: string | undefined,
+	args: {
+		y: boolean;
+		force: boolean;
+		provider: string | undefined;
+	},
+) => {
 	intro("Cloudspark CLI ⚡️");
 
 	let templateSource: string;
@@ -24,7 +30,9 @@ export default async (repo: string | undefined, folder: string | undefined, args
 		targetDir = folder ?? "worker";
 	} else if (args.y) {
 		// Bypass Mode
-		log.message("Bypassing all prompts, and initializing the default template.");
+		log.message(
+			"Bypassing all prompts, and initializing the default template.",
+		);
 		const template = TEMPLATES[0];
 		templateSource = buildSource(template.name, template.languages[0].name);
 		targetDir = "worker";
