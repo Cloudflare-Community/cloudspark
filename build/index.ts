@@ -15,7 +15,9 @@ buildSync({
 		js: `import { createRequire as topLevelCreateRequire } from "module";const require = topLevelCreateRequire(import.meta.url);`,
 	},
 });
-console.log("[Cloudspark] Built in " + (new Date().getTime() - start.getTime()) + "ms.");
+console.log(
+	"[Cloudspark] Built in " + (new Date().getTime() - start.getTime()) + "ms.",
+);
 console.log("[Cloudspark] Scaffolding Project...");
 cpSync("./build/cmdEntry.js", "./dist/cloudspark/entry.js");
 cpSync("./build/cloudspark.json", "./dist/cloudspark/package.json");
@@ -38,7 +40,9 @@ buildSync({
 		js: `#!/usr/bin/env node\nimport { createRequire as topLevelCreateRequire } from "module";const require = topLevelCreateRequire(import.meta.url);`,
 	},
 });
-console.log("[Create] Built in " + (new Date().getTime() - start.getTime()) + "ms.");
+console.log(
+	"[Create] Built in " + (new Date().getTime() - start.getTime()) + "ms.",
+);
 console.log("[Cloudspark] Scaffolding Project...");
 cpSync("./build/create.json", "./dist/create/package.json");
 cpSync("./build/CREATE.md", "./dist/create/README.md");

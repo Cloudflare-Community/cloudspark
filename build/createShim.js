@@ -9,7 +9,10 @@ const cli = program
 	)
 	.argument("[repo]", "The repository to initialize.")
 	.argument("[folder]", "The folder to initialize to.")
-	.option("-y", "Bypass prompts and use default values(doesn't apply to output folder conflicts).")
+	.option(
+		"-y",
+		"Bypass prompts and use default values(doesn't apply to output folder conflicts).",
+	)
 	.option("-f, --force", "Force clone the template, ignoring existing files.")
 	// .option("-p, --provider <git*>", "Use a specific git provider(github, gitlab, bitbucket, sourcehut). Defaults to github. Only supported when providing your own repo.")
 	.action(init);
